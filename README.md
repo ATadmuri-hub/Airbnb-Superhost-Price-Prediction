@@ -40,6 +40,26 @@ The analysis applies these methods to Airbnb listing data from three European ci
 - **Calibration matters** — linear models produce better-calibrated probabilities despite lower AUC, which has implications for real-world deployment
 - **Model agreement builds confidence** — when SHAP, GAM smooth terms, variable importance, and odds ratios all point to the same features, that signal is robust across fundamentally different modelling assumptions
 
+## Selected Results
+
+### Listing Locations Coloured by Nightly Price
+![Price Map](figures/selected/01_price_map.png)
+
+### Superhost Geographic Distribution
+![Superhost Map](figures/selected/02_superhost_map.png)
+
+### SHAP Beeswarm — XGBoost Classification
+![SHAP Beeswarm](figures/selected/03_shap_beeswarm.png)
+
+### Calibration Curves — All Classification Models
+![Calibration Curves](figures/selected/04_calibration_curves.png)
+
+### SHAP Dependence — Top 3 Predictors
+![SHAP Dependence](figures/selected/05_shap_dependence.png)
+
+### Model Prediction Correlation Matrix
+![Model Correlation](figures/selected/06_model_correlation.png)
+
 ## Project structure
 
 ```
