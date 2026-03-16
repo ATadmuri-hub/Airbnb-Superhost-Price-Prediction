@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airbnb Superhost & Price Prediction — Abdullah Tadmuri</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #1a1a1a; line-height: 1.6; background: #fafafa; }
+        .hero { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); color: white; padding: 60px 20px; text-align: center; }
+        .hero h1 { font-size: 2.2em; margin-bottom: 10px; font-weight: 700; }
+        .hero p { font-size: 1.1em; opacity: 0.9; max-width: 700px; margin: 0 auto; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+        h2 { font-size: 1.6em; margin: 40px 0 20px; border-bottom: 2px solid #0f3460; padding-bottom: 8px; color: #0f3460; }
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 20px 0; }
+        .stat { background: white; border-radius: 8px; padding: 20px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .stat .number { font-size: 2em; font-weight: 700; color: #0f3460; }
+        .stat .label { font-size: 0.9em; color: #666; margin-top: 4px; }
+        .figure { margin: 30px 0; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .figure img { width: 100%; display: block; }
+        .figure .caption { padding: 12px 16px; font-size: 0.9em; color: #444; border-top: 1px solid #eee; }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        th { background: #0f3460; color: white; padding: 10px 14px; text-align: left; font-size: 0.9em; }
+        td { padding: 10px 14px; border-bottom: 1px solid #eee; font-size: 0.9em; }
+        tr:hover { background: #f8f9fa; }
+        .badge { display: inline-block; background: #0f3460; color: white; padding: 4px 10px; border-radius: 12px; font-size: 0.8em; margin: 2px; }
+        .cta { text-align: center; margin: 40px 0; }
+        .cta a { display: inline-block; background: #0f3460; color: white; padding: 14px 32px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 1.1em; }
+        .cta a:hover { background: #16213e; }
+        footer { text-align: center; padding: 30px; color: #888; font-size: 0.85em; border-top: 1px solid #eee; margin-top: 40px; }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <h1>Airbnb Superhost & Price Prediction</h1>
+    <p>21 supervised learning models applied to 50,000+ Airbnb listings across Madrid, Barcelona, and Amsterdam. Classification, regression, SHAP interpretability, and beyond-course methods.</p>
+    <p style="margin-top: 16px; opacity: 0.7;">Abdullah Tadmuri | MSc Computational Social Science | UC3M 2025-2026</p>
+</div>
+
+<div class="container">
+
+    <div class="stats">
+        <div class="stat"><div class="number">21</div><div class="label">Models Trained</div></div>
+        <div class="stat"><div class="number">50K+</div><div class="label">Listings Analyzed</div></div>
+        <div class="stat"><div class="number">3</div><div class="label">European Cities</div></div>
+        <div class="stat"><div class="number">5,600</div><div class="label">Lines of Code</div></div>
+    </div>
+
+    <h2>Key Findings</h2>
+    <ul style="padding-left: 20px;">
+        <li><strong>Superhost status is a behaviour story</strong> — host responsiveness, acceptance rate, and tenure are the strongest predictors</li>
+        <li><strong>Pricing is a property story</strong> — listing capacity, location, and neighbourhood context dominate price prediction</li>
+        <li><strong>Random Forest</strong> achieves the highest classification AUC; <strong>XGBoost</strong> leads regression</li>
+        <li><strong>Calibration matters</strong> — linear models produce better-calibrated probabilities despite lower AUC</li>
+    </ul>
+
+    <h2>Results</h2>
+
+    <div class="figure">
+        <img src="figures/selected/01_price_map.png" alt="Price Map">
+        <div class="caption">Listing locations coloured by nightly price across Amsterdam, Barcelona, and Madrid. Price hotspots concentrate near city centres and tourist districts.</div>
+    </div>
+
+    <div class="figure">
+        <img src="figures/selected/02_superhost_map.png" alt="Superhost Map">
+        <div class="caption">Superhost geographic distribution. Unlike price, Superhosts are distributed citywide — behaviour matters more than location.</div>
+    </div>
+
+    <div class="figure">
+        <img src="figures/selected/03_shap_beeswarm.png" alt="SHAP Beeswarm">
+        <div class="caption">SHAP beeswarm plot for XGBoost classification. Each dot is one observation. Host total listings count, estimated occupancy, and response rate are the top drivers.</div>
+    </div>
+
+    <div class="figure">
+        <img src="figures/selected/04_calibration_curves.png" alt="Calibration Curves">
+        <div class="caption">Calibration curves for all 12 classification models. Points on the diagonal indicate perfect calibration. Linear models (GLM, Elastic Net) are best calibrated despite lower AUC.</div>
+    </div>
+
+    <div class="figure">
+        <img src="figures/selected/05_shap_dependence.png" alt="SHAP Dependence">
+        <div class="caption">SHAP dependence plots for the top 3 classification predictors, revealing non-linear relationships and interaction effects.</div>
+    </div>
+
+    <div class="figure">
+        <img src="figures/selected/06_model_correlation.png" alt="Model Correlation">
+        <div class="caption">Spearman correlation of predicted probabilities across all classification models. High correlation between GLM/ENet/RF suggests ensemble diversity is limited in those pairs.</div>
+    </div>
+
+    <h2>Models</h2>
+
+    <h3 style="margin-top: 20px; color: #333;">Classification (Superhost Status)</h3>
+    <table>
+        <tr><th>#</th><th>Model</th><th>Method</th></tr>
+        <tr><td>C1</td><td>Logistic Regression</td><td>glm</td></tr>
+        <tr><td>C2</td><td>Elastic Net</td><td>glmnet</td></tr>
+        <tr><td>C3</td><td>Random Forest</td><td>ranger</td></tr>
+        <tr><td>C4</td><td>XGBoost</td><td>xgbTree</td></tr>
+        <tr><td>C5</td><td>GAM</td><td>mgcv::bam</td></tr>
+        <tr><td>C6</td><td>Neural Network</td><td>nnet</td></tr>
+        <tr><td>C7</td><td>Decision Tree</td><td>rpart</td></tr>
+        <tr><td>C8</td><td>LDA</td><td>MASS::lda</td></tr>
+        <tr><td>C9</td><td>QDA</td><td>MASS::qda</td></tr>
+        <tr><td>C10</td><td>KNN</td><td>knn</td></tr>
+        <tr><td>C11</td><td>Naive Bayes</td><td>naive_bayes</td></tr>
+        <tr><td>C12</td><td>SVM (Radial)</td><td>kernlab</td></tr>
+        <tr><td>C13</td><td>KAN</td><td>pykan (Python)</td></tr>
+    </table>
+
+    <h3 style="margin-top: 20px; color: #333;">Regression (Nightly Price)</h3>
+    <table>
+        <tr><th>#</th><th>Model</th><th>Method</th></tr>
+        <tr><td>R1</td><td>Linear Regression</td><td>lm</td></tr>
+        <tr><td>R2</td><td>Stepwise (AIC/BIC)</td><td>step</td></tr>
+        <tr><td>R3</td><td>PCR &amp; PLS</td><td>pls</td></tr>
+        <tr><td>R4</td><td>Elastic Net</td><td>glmnet</td></tr>
+        <tr><td>R5</td><td>Random Forest</td><td>ranger</td></tr>
+        <tr><td>R6</td><td>XGBoost</td><td>xgbTree</td></tr>
+        <tr><td>R7</td><td>GAM</td><td>mgcv</td></tr>
+        <tr><td>R8</td><td>KAN</td><td>pykan (Python)</td></tr>
+    </table>
+
+    <h2>Tech Stack</h2>
+    <div>
+        <span class="badge">R</span>
+        <span class="badge">Python</span>
+        <span class="badge">tidyverse</span>
+        <span class="badge">caret</span>
+        <span class="badge">XGBoost</span>
+        <span class="badge">Random Forest</span>
+        <span class="badge">glmnet</span>
+        <span class="badge">mgcv</span>
+        <span class="badge">SHAP</span>
+        <span class="badge">PyKAN</span>
+        <span class="badge">ggplot2</span>
+        <span class="badge">pROC</span>
+    </div>
+
+    <div class="cta">
+        <a href="https://github.com/ATadmuri-hub/Airbnb-Superhost-Price-Prediction">View Source Code on GitHub</a>
+    </div>
+
+</div>
+
+<footer>
+    Abdullah Tadmuri | MSc Computational Social Science | Universidad Carlos III de Madrid | 2026
+</footer>
+
+</body>
+</html>

@@ -9,6 +9,7 @@
 
 # Rendered output (regenerate from .Rmd)
 *.html
+!docs/index.html
 
 # Raw data (download from Inside Airbnb)
 airbnb_data/
