@@ -1,0 +1,32 @@
+# R / RStudio
+.Rhistory
+.RData
+.Rproj.user/
+
+# Knitr cache and output
+*_cache/
+*_files/
+
+# Rendered output (regenerate from .Rmd)
+*.html
+
+# Raw data (download from Inside Airbnb)
+airbnb_data/
+airbnb_data.zip
+airbnb_processed.csv
+
+# Intermediate KAN exports (regeneratable)
+x_kan_*.csv
+y_kan_*.csv
+kan_pred_*.csv
+kan_*_export_meta.csv
+*_feature_names.csv
+_train_indices.csv
+_test_indices.csv
+
+# Model cache
+model/
+
+# macOS
+.DS_Store
+~$*

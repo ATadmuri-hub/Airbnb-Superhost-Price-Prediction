@@ -1,0 +1,926 @@
+/* ============================================================
+   Advanced Modelling Final Project 2026 — Airbnb Analysis
+   Professional Blue Dashboard Theme CSS
+   Card-based layout · Analytics dashboard feel
+   WCAG AA contrast compliant · Accessible design
+   ============================================================ */
+
+/* ── Google Fonts (system fallbacks for offline use) ─────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap');
+
+/* ── CSS Variables — Professional Blue Dashboard Palette ─── */
+:root {
+  /* Primary Blue Palette — Professional & Analytics-focused */
+  --primary:         #1B4F72;  /* Deep professional dark blue */
+  --primary-light:   #D6EAF8;  /* Light blue tint */
+  --primary-dark:    #0E2F47;  /* Darker blue for contrast */
+  --primary-accent:  #3498DB;  /* Bright medium blue */
+
+  /* Secondary Blue Tones */
+  --blue-sky:        #5DADE2;  /* Sky blue accent */
+  --blue-slate:      #34495E;  /* Slate blue */
+  --blue-teal:       #17A2B8;  /* Teal accent */
+
+  /* Accent colors (kept colorblind-safe) */
+  --accent-success:  #27AE60;  /* Green for positive metrics */
+  --accent-warning:  #F39C12;  /* Amber/Orange for warnings */
+  --accent-danger:   #E74C3C;  /* Red for critical */
+  --accent-purple:   #8E44AD;  /* Purple for contrast */
+
+  /* Background colors for callouts/accents */
+  --success-bg:      #E8F8F5;
+  --warning-bg:      #FEF5E7;
+  --danger-bg:       #FADBD8;
+  --insight-bg:      #E8F4F8;
+
+  /* Neutrals */
+  --text-primary:    #1A1A2E;
+  --text-secondary:  #2C3E50;
+  --text-muted:      #7F8C8D;
+  --bg-body:         #F0F4F7;  /* Subtle blue-gray background */
+  --bg-card:         #FFFFFF;
+  --bg-code:         #1C2238;  /* Dark navy for code blocks */
+  --border:          #D5DBEB;
+  --border-light:    #E8EEF5;
+
+  /* Effects */
+  --shadow-sm:       0 1px 3px rgba(27,79,114,0.08), 0 2px 6px rgba(27,79,114,0.04);
+  --shadow-md:       0 4px 12px rgba(27,79,114,0.12), 0 8px 20px rgba(27,79,114,0.06);
+  --shadow-lg:       0 8px 32px rgba(27,79,114,0.15), 0 16px 48px rgba(27,79,114,0.08);
+  --shadow-hover:    0 12px 40px rgba(27,79,114,0.18);
+
+  --radius:          10px;
+  --radius-lg:       14px;
+  --radius-md:       8px;
+  --transition:      0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Typography */
+  --font-body:       'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-code:       'Fira Code', 'Cascadia Code', 'Source Code Pro', monospace;
+}
+
+/* ── Base ───────────────────────────────────────────────────── */
+body {
+  font-family: var(--font-body);
+  font-size: 15.5px;
+  line-height: 1.78;
+  color: var(--text-primary);
+  background-color: var(--bg-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--blue-sky);
+  color: var(--text-primary);
+}
+
+.main-container {
+  max-width: 1180px;
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+/* ── Page Header with Gradient Banner ───────────────────────── */
+/* R Markdown html_document renders the YAML header as:
+   h1.title + h3.subtitle + h4.author + h4.date
+   all as direct children of .main-container (no wrapper div).
+   We style these directly AND inject a pseudo-element banner.    */
+
+.main-container > .title,
+.main-container > .subtitle,
+.main-container > .author,
+.main-container > .date {
+  position: relative;
+  z-index: 2;
+}
+
+/* Title */
+h1.title.toc-ignore {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: -0.6px;
+  margin-bottom: 0.15em;
+  margin-top: 0.8em;
+  line-height: 1.2;
+  background: none;
+  -webkit-text-fill-color: var(--primary);
+  border-bottom: 4px solid var(--primary-accent);
+  padding-bottom: 0.4em;
+}
+
+/* Subtitle */
+h3.subtitle {
+  font-size: 2.3rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  margin-top: 0.3em;
+  margin-bottom: 0.6em;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  border-bottom: none;
+  padding-left: 0;
+}
+
+/* Author & Date */
+h4.author, h4.date {
+  font-size: 2rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin: 0.15em 0;
+  border-bottom: none;
+  padding-left: 0;
+  font-style: italic;
+}
+
+/* ── Section Headings with Blue Styling ─────────────────────── */
+h1 {
+  font-size: 2.1rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.4px;
+  border-bottom: 3px solid var(--primary);
+  padding-bottom: 0.4em;
+  margin-top: 2.8em;
+  margin-bottom: 1em;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  border-left: 6px solid var(--primary);
+  padding-left: 1em;
+  margin-top: 2.2em;
+  margin-bottom: 0.8em;
+  letter-spacing: -0.2px;
+  transition: all var(--transition);
+}
+
+h2:hover {
+  border-left-color: var(--blue-sky);
+  color: var(--blue-slate);
+}
+
+h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--primary-accent);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-top: 1.8em;
+  margin-bottom: 0.6em;
+  padding-bottom: 0.4em;
+  border-bottom: 2px solid var(--border-light);
+}
+
+h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-top: 1.3em;
+  margin-bottom: 0.5em;
+}
+
+/* ── Horizontal Rule ────────────────────────────────────────── */
+hr {
+  border: none;
+  border-top: 2px solid var(--border);
+  margin: 2.8em 0;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  height: 1px;
+}
+
+/* ── Paragraphs & Lists ─────────────────────────────────────── */
+p {
+  margin-bottom: 1.2em;
+  color: var(--text-secondary);
+}
+
+ul, ol {
+  padding-left: 1.8em;
+  margin-bottom: 1em;
+}
+
+li {
+  margin-bottom: 0.55em;
+  color: var(--text-secondary);
+}
+
+/* ── Links ──────────────────────────────────────────────────── */
+a {
+  color: var(--primary-accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all var(--transition);
+  font-weight: 500;
+}
+
+a:hover {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+  text-decoration: underline;
+}
+
+a:focus-visible {
+  outline: 3px solid var(--blue-sky);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ── Code Inline ────────────────────────────────────────────── */
+code {
+  font-family: var(--font-code);
+  font-size: 0.88em;
+  background: var(--primary-light);
+  color: var(--primary-dark);
+  border-radius: 5px;
+  padding: 0.2em 0.5em;
+  border: 1px solid var(--border);
+  font-weight: 500;
+}
+
+/* ── Code Blocks with Dark Navy Background ──────────────────── */
+pre {
+  font-family: var(--font-code);
+  font-size: 0.75em;
+  background: var(--bg-code);
+  color: #E0E6FF;
+  border-radius: var(--radius-lg);
+  padding: 1.3em;
+  overflow-x: auto;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(93, 173, 226, 0.15);
+  margin: 1.1em 0 1.6em;
+  line-height: 1.65;
+  position: relative;
+}
+
+pre::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--blue-sky), var(--primary));
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+pre code {
+  background: transparent;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font-size: 1em;
+}
+
+/* ── R Console Output (distinct from source code blocks) ────── */
+/* R output blocks in rmarkdown HTML don't have .sourceCode class */
+pre:not(.sourceCode) {
+  background: linear-gradient(135deg, #F4F6FA 0%, #E8EDF5 100%);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  font-size: 0.83em;
+}
+
+pre:not(.sourceCode)::before {
+  background: linear-gradient(90deg, var(--primary-accent), var(--blue-teal), var(--primary-accent));
+  height: 2px;
+}
+
+pre:not(.sourceCode) code {
+  color: var(--text-secondary);
+}
+
+/* ── Tables with Blue Header Bar ────────────────────────────── */
+table {
+  width: auto;
+  min-width: 55%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  margin: 1.6em auto;
+  font-size: 0.96em;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+}
+
+thead tr {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--blue-slate) 100%);
+  color: #FFFFFF;
+}
+
+thead th {
+  padding: 1em 1.3em;
+  font-weight: 700;
+  text-align: left;
+  letter-spacing: 0.4px;
+  border: none;
+  white-space: nowrap;
+  text-transform: uppercase;
+  font-size: 0.85em;
+}
+
+tbody tr {
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border-light);
+  transition: all var(--transition);
+}
+
+tbody tr:hover {
+  background: linear-gradient(90deg, var(--primary-light) 0%, transparent 100%);
+  box-shadow: inset 4px 0 0 var(--primary);
+}
+
+tbody tr:nth-child(even) {
+  background: linear-gradient(90deg, var(--primary-light) 0%, var(--bg-card) 100%);
+}
+
+tbody tr:nth-child(even):hover {
+  background: linear-gradient(90deg, var(--primary-light) 0%, transparent 100%);
+  box-shadow: inset 4px 0 0 var(--primary);
+}
+
+tbody td {
+  padding: 0.8em 1.3em;
+  border: none;
+  color: var(--text-secondary);
+}
+
+td strong, th strong {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.table-caption, caption {
+  font-size: 0.9em;
+  color: var(--text-muted);
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 0.7em;
+  padding: 0.5em;
+}
+
+/* ── Figures with Card Frame ────────────────────────────────── */
+img {
+  max-width: 100%;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition);
+  border: 1px solid var(--border-light);
+  background: var(--bg-card);
+  padding: 10px;
+}
+
+img:hover {
+  box-shadow: var(--shadow-hover);
+  border-color: var(--primary-accent);
+}
+
+.figure {
+  margin: 3em 0;
+  background: var(--bg-card);
+  padding: 1.8em;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-light);
+}
+
+/* ── Blockquotes ────────────────────────────────────────────── */
+blockquote {
+  border-left: 6px solid var(--primary-accent);
+  background: linear-gradient(135deg, var(--primary-light) 0%, transparent 100%);
+  margin: 1.8em 0;
+  padding: 1.4em 1.8em;
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  color: var(--text-primary);
+  box-shadow: var(--shadow-sm);
+  font-style: italic;
+  font-size: 1.02em;
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+blockquote strong {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* ── Callout Boxes — Blue Dashboard Theme ─────────────────── */
+
+/* Insight callout - now blue themed */
+.callout-insight {
+  background: linear-gradient(135deg, var(--insight-bg) 0%, rgba(93, 173, 226, 0.05) 100%);
+  border-left: 6px solid var(--primary-accent);
+  padding: 1.3em 1.7em;
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  margin: 1.6em 0;
+  font-size: 0.96em;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  color: var(--text-secondary);
+}
+
+.callout-insight::before {
+  content: "KEY INSIGHT";
+  display: block;
+  font-weight: 700;
+  color: var(--primary-accent);
+  margin-bottom: 0.5em;
+  font-size: 0.85em;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+}
+
+/* Warning callout - kept orange/amber as specified */
+.callout-warning {
+  background: linear-gradient(135deg, var(--warning-bg) 0%, rgba(243, 156, 18, 0.05) 100%);
+  border-left: 6px dashed var(--accent-warning);
+  padding: 1.3em 1.7em;
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  margin: 1.6em 0;
+  font-size: 0.96em;
+  box-shadow: var(--shadow-sm);
+  color: var(--text-secondary);
+}
+
+.callout-warning::before {
+  content: "METHODOLOGICAL NOTE";
+  display: block;
+  font-weight: 700;
+  color: #D68910;
+  margin-bottom: 0.5em;
+  font-size: 0.85em;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+}
+
+/* Result callout */
+.callout-result {
+  background: linear-gradient(135deg, var(--insight-bg) 0%, rgba(52, 152, 219, 0.05) 100%);
+  border-left: 6px solid var(--primary-accent);
+  padding: 1.3em 1.7em;
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  margin: 1.6em 0;
+  font-size: 0.96em;
+  box-shadow: var(--shadow-sm);
+  color: var(--text-secondary);
+}
+
+.callout-result::before {
+  content: "RESULT";
+  display: block;
+  font-weight: 700;
+  color: var(--primary-accent);
+  margin-bottom: 0.5em;
+  font-size: 0.85em;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+}
+
+/* KAN callout - dark navy theme with blue accents */
+.callout-kan {
+  background: linear-gradient(135deg, #1C2238 0%, #2C3E50 100%);
+  border-left: 6px double var(--blue-sky);
+  padding: 1.5em 1.9em;
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  margin: 1.6em 0;
+  color: #D0D8E6;
+  font-size: 0.96em;
+  box-shadow: var(--shadow-md);
+  position: relative;
+}
+
+.callout-kan::before {
+  content: "KOLMOGOROV-ARNOLD NETWORK";
+  display: block;
+  font-weight: 700;
+  color: var(--blue-sky);
+  margin-bottom: 0.5em;
+  font-size: 0.85em;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+}
+
+.callout-kan a {
+  color: var(--blue-sky);
+  border-bottom-color: var(--blue-sky);
+}
+
+.callout-kan code {
+  background: rgba(93, 173, 226, 0.12);
+  color: var(--blue-sky);
+  border-color: rgba(93, 173, 226, 0.25);
+}
+
+/* Caution callout */
+.callout-caution {
+  background: linear-gradient(135deg, var(--danger-bg) 0%, rgba(231, 76, 60, 0.05) 100%);
+  border-left: 6px dashed var(--accent-danger);
+  padding: 1.3em 1.7em;
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  margin: 1.6em 0;
+  font-size: 0.96em;
+  box-shadow: var(--shadow-sm);
+  color: var(--text-secondary);
+}
+
+.callout-caution::before {
+  content: "IMPORTANT CAVEAT";
+  display: block;
+  font-weight: 700;
+  color: var(--accent-danger);
+  margin-bottom: 0.5em;
+  font-size: 0.85em;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+}
+
+/* ── Stat Cards — Blue Gradient Dashboard ─────────────────── */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.4em;
+  margin: 2.2em 0;
+}
+
+.stat-card {
+  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(27, 79, 114, 0.02) 100%);
+  border-radius: var(--radius-lg);
+  padding: 1.6em 1.3em;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  border-top: 5px solid var(--primary);
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -50%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  transition: all var(--transition);
+}
+
+.stat-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+  border-top-color: var(--blue-sky);
+}
+
+.stat-card:hover::before {
+  right: -30%;
+}
+
+.stat-card:nth-child(2) { border-top-color: var(--blue-sky); }
+.stat-card:nth-child(3) { border-top-color: var(--accent-success); }
+.stat-card:nth-child(4) { border-top-color: var(--accent-warning); }
+.stat-card:nth-child(5) { border-top-color: var(--blue-teal); }
+.stat-card:nth-child(6) { border-top-color: var(--accent-danger); }
+
+.stat-card .stat-number {
+  font-size: 2.2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primary), var(--primary-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+  margin-bottom: 0.3em;
+  position: relative;
+  z-index: 1;
+}
+
+.stat-card:nth-child(2) .stat-number { background: linear-gradient(135deg, var(--blue-sky), #3498DB); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.stat-card:nth-child(3) .stat-number { background: linear-gradient(135deg, var(--accent-success), #2ECC71); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.stat-card:nth-child(4) .stat-number { background: linear-gradient(135deg, var(--accent-warning), #F7DC6F); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.stat-card:nth-child(5) .stat-number { background: linear-gradient(135deg, var(--blue-teal), #48C9B0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.stat-card:nth-child(6) .stat-number { background: linear-gradient(135deg, var(--accent-danger), #EC7063); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+.stat-card .stat-label {
+  font-size: 0.8em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.9px;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Table of Contents with Blue Styling ────────────────────── */
+#TOC {
+  font-size: 0.88em;
+  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(27, 79, 114, 0.02) 100%);
+  border: 2px solid var(--primary-light);
+  border-left: 6px solid var(--primary);
+  border-radius: var(--radius-lg);
+  padding: 1.6em;
+  box-shadow: var(--shadow-sm);
+}
+
+#TOC h2 {
+  margin-top: 0;
+  padding-top: 0;
+  font-size: 1.2rem;
+  border: none;
+  padding-left: 0;
+  color: var(--primary);
+}
+
+#TOC ul {
+  padding-left: 1.3em;
+}
+
+#TOC li {
+  margin-bottom: 0.5em;
+}
+
+#TOC a {
+  color: var(--text-primary);
+  border-bottom: 1px solid transparent;
+  transition: all var(--transition);
+  font-weight: 500;
+}
+
+#TOC a:hover {
+  color: var(--primary-accent);
+  border-bottom-color: var(--primary-accent);
+  padding-left: 0.3em;
+}
+
+#TOC .active a {
+  color: var(--primary);
+  font-weight: 700;
+  border-bottom: 2px solid var(--primary);
+  padding-left: 0.5em;
+}
+
+/* ── Navbar with Blue Gradient ──────────────────────────────── */
+.navbar {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--blue-slate) 100%) !important;
+  box-shadow: 0 4px 16px rgba(27, 79, 114, 0.25);
+  border-bottom: 3px solid var(--primary-accent);
+}
+
+.navbar-brand, .navbar-nav > li > a {
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.3px;
+  transition: all var(--transition) !important;
+}
+
+.navbar-nav > li > a:hover {
+  color: var(--blue-sky) !important;
+  transform: translateY(-2px);
+}
+
+/* ── Code Folding Buttons ───────────────────────────────────── */
+.btn-default {
+  border: 2px solid var(--primary) !important;
+  color: var(--primary) !important;
+  background: transparent !important;
+  border-radius: 8px !important;
+  font-size: 0.85em !important;
+  font-weight: 600 !important;
+  transition: all var(--transition) !important;
+  padding: 0.6em 1.2em !important;
+}
+
+.btn-default:hover {
+  background: linear-gradient(135deg, var(--primary), var(--primary-accent)) !important;
+  color: #FFFFFF !important;
+  box-shadow: var(--shadow-md) !important;
+  transform: translateY(-2px);
+}
+
+.btn-default:focus-visible {
+  outline: 3px solid var(--blue-sky) !important;
+  outline-offset: 2px !important;
+}
+
+/* ── Print Styles ──────────────────────────────────────────── */
+@media print {
+  body {
+    background: white;
+    font-size: 11pt;
+  }
+
+  .title-container {
+    background: linear-gradient(135deg, #1B4F72 0%, #3498DB 100%);
+    margin: 0;
+    padding: 2em;
+  }
+
+  pre {
+    box-shadow: none;
+    border: 2px solid #1B4F72;
+  }
+
+  .callout-kan {
+    background: #f5f5f5 !important;
+    color: #333 !important;
+    border-left-color: #1B4F72 !important;
+  }
+
+  .stat-card {
+    break-inside: avoid;
+    border: 1px solid var(--primary);
+  }
+
+  img {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+
+  table {
+    box-shadow: none;
+    border: 1px solid var(--primary);
+  }
+}
+
+/* ── Responsive Design ──────────────────────────────────────── */
+@media (max-width: 768px) {
+  .stat-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1em;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .title-container {
+    padding: 2em 1.5em;
+    margin: -1.5em -1.5em 1.5em -1.5em;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+    padding-left: 0.8em;
+  }
+
+  h3 {
+    font-size: 0.95rem;
+  }
+
+  .main-container {
+    padding-left: 1.2em;
+    padding-right: 1.2em;
+  }
+
+  table {
+    font-size: 0.85em;
+    margin: 1.2em 0;
+  }
+
+  thead th {
+    padding: 0.8em 0.9em;
+  }
+
+  tbody td {
+    padding: 0.6em 0.9em;
+  }
+
+  pre {
+    font-size: 0.78em;
+    padding: 1em 1.2em;
+    margin: 1em 0 1.4em;
+  }
+
+  .stat-card {
+    padding: 1.2em 0.9em;
+  }
+
+  .stat-card .stat-number {
+    font-size: 1.8rem;
+  }
+
+  #TOC {
+    padding: 1.2em;
+    font-size: 0.83em;
+  }
+
+  .callout-insight,
+  .callout-warning,
+  .callout-result,
+  .callout-caution,
+  .callout-kan {
+    padding: 1em 1.3em;
+    margin: 1.2em 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .stat-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .title {
+    font-size: 1.6rem;
+  }
+
+  h1 {
+    font-size: 1.3rem;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+  }
+
+  table {
+    font-size: 0.8em;
+    margin: 1em 0;
+  }
+
+  pre {
+    padding: 0.8em 1em;
+    font-size: 0.72em;
+    margin: 0.8em 0 1.2em;
+  }
+}
+
+/* ── Accessibility: Reduced Motion ──────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .stat-card:hover {
+    transform: none;
+  }
+
+  .navbar-nav > li > a:hover {
+    transform: none;
+  }
+
+  .btn-default:hover {
+    transform: none;
+  }
+}
+
+/* ── Accessibility: High Contrast Mode ──────────────────────── */
+@media (prefers-contrast: high) {
+  :root {
+    --shadow-sm: none;
+    --shadow-md: none;
+    --shadow-lg: none;
+    --shadow-hover: none;
+  }
+
+  table,
+  .stat-card,
+  .callout-insight,
+  .callout-warning,
+  .callout-result,
+  .callout-kan,
+  .callout-caution,
+  blockquote,
+  #TOC,
+  pre,
+  .figure {
+    border: 2px solid var(--text-primary);
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  h1, h2 {
+    border-color: var(--text-primary);
+  }
+
+  .stat-card {
+    border: 2px solid var(--text-primary);
+  }
+}
+
+/* ── Force Light Mode (disable dark mode interference) ─────── */
+/* The blue dashboard theme is designed for light backgrounds.
+   We explicitly force light color-scheme so that system dark
+   mode does NOT override CSS variables or element colors.       */
+:root {
+  color-scheme: light only;
+}
