@@ -1,8 +1,16 @@
-# Advanced Modelling Final Project — Airbnb Superhost Classification & Price Prediction
+# Airbnb Superhost Classification & Price Prediction
 
-**Course**: Advanced Modelling (UC3M, 2025-2026)
-**Instructor**: Pablo Morala
-**Author**: Abdullah Tadmuri (100502844)
+**21 supervised learning models on 50,000+ listings across Madrid, Barcelona, and Amsterdam: what makes a Superhost, what drives nightly prices, and what the models can and cannot tell us.**
+
+![R](https://img.shields.io/badge/R-4.3+-276DC3?style=flat-square&logo=r&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3.9+-3776AB?style=flat-square&logo=python&logoColor=white)
+![caret](https://img.shields.io/badge/caret-classification%20%2B%20regression-276DC3?style=flat-square)
+![XGBoost](https://img.shields.io/badge/XGBoost-EC4E20?style=flat-square)
+![SHAP](https://img.shields.io/badge/SHAP-interpretability-7B2D8E?style=flat-square)
+![KAN](https://img.shields.io/badge/KAN-benchmark-5D4037?style=flat-square)
+![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
+
+> Final project for Advanced Modelling, MSc Computational Social Science, UC3M (2025-2026). Instructor: Pablo Morala.
 
 ## Why this project
 
@@ -186,4 +194,13 @@ The following methods extend beyond the course curriculum:
 
 ## License
 
-This project is submitted as coursework for UC3M's Advanced Modelling course (2025-2026). The data is provided by Inside Airbnb under their terms of use.
+Code is released under the [MIT License](LICENSE). Listing data is provided by
+[Inside Airbnb](https://insideairbnb.com/get-the-data/) under their terms of use and is not
+redistributed here.
+
+## Author
+
+**Abdullah Tadmuri** | MSc Computational Social Science, Universidad Carlos III de Madrid
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/abdullah-tadmuri-500467203)
+[![GitHub](https://img.shields.io/badge/Portfolio-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/ATadmuri-hub)
