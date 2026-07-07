@@ -35,7 +35,7 @@ The two prediction tasks, Superhost classification and nightly price regression,
 
 ## Overview
 
-The analysis applies these methods to Airbnb listing data from three European cities — **Madrid**, **Barcelona**, and **Amsterdam**: each with its own regulatory environment, tourism profile, and housing market dynamics:
+The analysis applies these methods to Airbnb listing data from three European cities: **Madrid**, **Barcelona**, and **Amsterdam**: each with its own regulatory environment, tourism profile, and housing market dynamics:
 
 1. **Classification**: Predicting whether a host holds Superhost status (binary: Yes/No)
 2. **Regression**: Predicting nightly listing price (continuous, log-transformed)
@@ -56,13 +56,13 @@ The analysis applies these methods to Airbnb listing data from three European ci
 ### Superhost Geographic Distribution
 ![Superhost Map](figures/selected/02_superhost_map.png)
 
-### SHAP Beeswarm — XGBoost Classification
+### SHAP Beeswarm (XGBoost Classification)
 ![SHAP Beeswarm](figures/selected/03_shap_beeswarm.png)
 
-### Calibration Curves — All Classification Models
+### Calibration Curves (All Classification Models)
 ![Calibration Curves](figures/selected/04_calibration_curves.png)
 
-### SHAP Dependence — Top 3 Predictors
+### SHAP Dependence (Top 3 Predictors)
 ![SHAP Dependence](figures/selected/05_shap_dependence.png)
 
 ### Model Prediction Correlation Matrix
@@ -77,7 +77,7 @@ The analysis applies these methods to Airbnb listing data from three European ci
 ├── kan_train.py              # Python script for KAN classification training
 ├── kan_reg_train.py          # Python script for KAN regression training
 ├── run_full_pipeline.sh      # Shell script to run the full pipeline
-├── airbnb_data/              # Raw data (not tracked — see Data section)
+├── airbnb_data/              # Raw data (not tracked, see Data section)
 │   ├── madrid_listings.csv.gz
 │   ├── barcelona_listings.csv.gz
 │   └── amsterdam_listings.csv.gz
@@ -132,7 +132,7 @@ To reproduce the analysis:
 ### Prerequisites
 
 - **R** >= 4.3.0
-- **Python** >= 3.9 (only for KAN models — optional)
+- **Python** >= 3.9 (only for KAN models, optional)
 - R packages listed below
 
 ### R packages
@@ -150,7 +150,7 @@ install.packages(c(
   # Visualisation
   "ggplot2", "patchwork", "corrplot", "gridExtra", "grid",
   "scales", "viridis", "ggrepel",
-  "maps",               # required by ggplot2::map_data() — install but do not load
+  "maps",               # required by ggplot2::map_data(); install but do not load
   # Utilities
   "kableExtra", "readr", "stringr", "purrr", "tibble", "tidyr", "dplyr",
   "janitor"
@@ -165,10 +165,10 @@ pip install pykan torch numpy pandas scikit-learn
 
 ### Running the analysis
 
-**Option 1 — Knit in RStudio:**
+**Option 1: Knit in RStudio**
 Open `final_project.Rmd` in RStudio and click Knit (or run `rmarkdown::render("final_project.Rmd")`).
 
-**Option 2 — Full pipeline (includes KAN):**
+**Option 2: Full pipeline (includes KAN)**
 ```bash
 # 1. Generate KAN predictions (optional)
 python kan_train.py
